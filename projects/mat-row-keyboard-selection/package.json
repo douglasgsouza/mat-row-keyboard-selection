@@ -1,8 +1,36 @@
 {
   "name": "mat-row-keyboard-selection",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "A very simple directive that allows Focus MatRow and toogle SelectionModel using keyboard TAB, arrows Up, Down, Enter and Space.",
+  "author": "Douglas Gomes de Souza",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular4",
+    "angular6",
+    "angular7",
+    "material",
+    "mattable",
+    "matrow",
+    "mat-table",
+    "mat-row",
+    "keyboard",
+    "tab",
+    "selection"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/douglasgsouza/mat-row-keyboard-selection.git"
+  },
+  "bugs": {
+    "url": "https://github.com/douglasgsouza/mat-row-keyboard-selection/issues"
+  },
+  "homepage": "https://github.com/douglasgsouza/mat-row-keyboard-selection#readme",
   "peerDependencies": {
     "@angular/common": "^7.1.0",
-    "@angular/core": "^7.1.0"
+    "@angular/core": "^7.1.0",
+    "@angular/material": "^7.3.0",
+    "@angular/cdk": "^7.3.0"
   }
 }

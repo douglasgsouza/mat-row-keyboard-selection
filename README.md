@@ -1,27 +1,91 @@
-# MatRowKeyboardSelectionPackage
+# MatRowKeyboardSelectionDirective
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
+[![GitHub issues](https://img.shields.io/github/issues/douglasgsouza/mat-row-keyboard-selection.png)](https://github.com/douglasgsouza/mat-row-keyboard-selection/issues)
+[![GitHub stars](https://img.shields.io/github/stars/douglasgsouza/mat-row-keyboard-selection.png)](https://github.com/douglasgsouza/mat-row-keyboard-selection/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.png)](https://raw.githubusercontent.com/douglasgsouza/mat-row-keyboard-selection/master/LICENSE)
 
-## Development server
+## Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+https://douglasgsouza.github.io/mat-row-keyboard-selection/
 
-## Code scaffolding
+## Table of contents
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [About](#about)
+- [Installation](#installation)
+- [Documentation](https://github.com/douglasgsouza/mat-row-keyboard-selection/blob/master/README.md)
+- [License](#license)
 
-## Build
+## About
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Getting Started
 
-## Running unit tests
+### Installing and Importing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install the package by command:
 
-## Running end-to-end tests
+```sh
+    npm install mat-row-keyboard-selection --save
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Import the module
 
-## Further help
+```ts
+import { MatRowKeyboardSelectionModule } from "mat-row-keyboard-selection";
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+@NgModule({
+    imports: [
+        ...
+        MatRowKeyboardSelectionModule
+    ],
+    declarations: [...],
+    providers: [...]
+})
+export class AppModule {}
+```
+
+or import only Directive
+
+```ts
+import { MatRowKeyboardSelectionDirective } from "mat-row-keyboard-selection";
+
+@NgModule({
+    declarations: [MatRowKeyboardSelectionDirective],
+})
+export class YourModule {}
+```
+
+### Using 
+
+With `<table mat-table>`
+
+```html
+    <table mat-table [dataSource]="dataSource1">
+    ....
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row"></tr>
+```
+
+With `<mat-table>`
+
+```html
+    <table mat-table [dataSource]="dataSource1">
+    ....
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row"></mat-row>
+```
+ 
+
+### Options 
+
+You can set options...
+
+```html
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row" [selectOnFocus]="true"></tr>
+```  
+
+Available options: 
+
+ * `selectOnFocus` - Automatic select on row focus. (default: `false`)
+   * If you have other row selection behaviors such as select `on click` or `checkbox selection` I recommend not enable this option and let your component decide when to make selection.
+
+## License
+
+MIT @ Douglas Gomes de Souza

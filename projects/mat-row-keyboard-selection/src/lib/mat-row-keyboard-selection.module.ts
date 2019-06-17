@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MatRowKeyboardSelectionComponent } from './mat-row-keyboard-selection.component';
+import { MatRowKeyboardSelectionDirective } from './mat-row-keyboard-selection.directive';
 
 @NgModule({
-  declarations: [MatRowKeyboardSelectionComponent],
+  declarations: [MatRowKeyboardSelectionDirective],
   imports: [
   ],
-  exports: [MatRowKeyboardSelectionComponent]
+  exports: [MatRowKeyboardSelectionDirective]
 })
 export class MatRowKeyboardSelectionModule { }
