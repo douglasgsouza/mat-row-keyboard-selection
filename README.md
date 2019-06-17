@@ -66,7 +66,7 @@ With `<table mat-table>`
 ```html
     <table mat-table [dataSource]="dataSource1">
     ....
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row"></tr>
+    <tr mat-row [matRowKeyboardSelection]="selectionModel" [rowModel]="row" *matRowDef="let row; columns: displayedColumns;"></tr>
 ```
 
 With `<mat-table>`
@@ -74,7 +74,7 @@ With `<mat-table>`
 ```html
     <table mat-table [dataSource]="dataSource1">
     ....
-    <mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row"></mat-row>
+    <mat-row [matRowKeyboardSelection]="selectionModel" [rowModel]="row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
 ```
  
 Keyboard Keys:
@@ -90,13 +90,21 @@ Keyboard Keys:
 You can set options...
 
 ```html
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row" [selectOnFocus]="true"></tr>
+    <tr mat-row [matRowKeyboardSelection]="selectionModel" [rowModel]="row" [selectOnFocus]="true" [deselectOnBlur]="true" *matRowDef="let row; columns: displayedColumns;"></tr>
 ```  
 
 Available options: 
 
  * `selectOnFocus` - Automatic select on row focus. (default: `false`)
    * If you have other row selection behaviors such as select `on click` or `checkbox selection` I recommend not enable this option and let your component decide when to make selection.
+ * `deselectOnBlur` - Automatic deselect on row blur. (default: `false`)
+
+## Dependencies
+* Angular Core
+* Angular Material (MatTable, MatTableDataSource, MatRow)
+* Angular CDK Collections (SelectionModel)
+
+Tested and made with on Angular 7.3.
 
 ## License
 

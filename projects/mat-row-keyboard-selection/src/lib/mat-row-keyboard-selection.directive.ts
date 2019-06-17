@@ -17,6 +17,7 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
 
   @Input() rowModel;
   @Input() selectOnFocus = false;
+  @Input() deselectOnBlur = false;
 
   constructor(private el: ElementRef, @Host() @Self() private row: MatRow, @Host() private matTable: MatTable<any>) {}
 
@@ -38,9 +39,15 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
     this.rows = this.getTableRows();
   }
 
-  @HostListener('focus', ['$event']) onFocus(event: FocusEvent) {
+  @HostListener('focus', ['$event']) onFocus() {
     if (this.selectOnFocus && !this.selection.isMultipleSelection()) {
-      this.selection.toggle(this.rowModel);
+      this.selection.select(this.rowModel);
+    }
+  }
+
+  @HostListener('blur', ['$event']) onBlur() {
+    if (this.deselectOnBlur && !this.selection.isMultipleSelection()) {
+      this.selection.deselect(this.rowModel);
     }
   }
 

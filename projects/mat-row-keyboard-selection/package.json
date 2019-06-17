@@ -1,6 +1,6 @@
 {
   "name": "mat-row-keyboard-selection",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A very simple directive that allows Focus MatRow and toogle SelectionModel using keyboard TAB, arrows Up, Down, Enter and Space.",
   "author": "Douglas Gomes de Souza",
   "license": "MIT",

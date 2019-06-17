@@ -16,7 +16,7 @@
     <pre>Selected: {{selection3.selected | json}}</pre>
   </div>
   <div>
-    <h2>&lt;mat-table&gt; autoFocus</h2>
+    <h2>&lt;mat-table&gt; autoFocus deselectOnBlur</h2>
     <pre>Selected: {{selection4.selected | json}}</pre>
   </div>
 </header>
@@ -90,7 +90,7 @@
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumnsB"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumnsB;" [matRowKeyboardSelection]="selection4" [rowModel]="row" [selectOnFocus]="true"  [ngClass]="{selected: selection4.isSelected(row)}"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsB;" [matRowKeyboardSelection]="selection4" [rowModel]="row" [selectOnFocus]="true" [deselectOnBlur]="true"  [ngClass]="{selected: selection4.isSelected(row)}"></mat-row>
     </mat-table>
   </div>
 </section>
