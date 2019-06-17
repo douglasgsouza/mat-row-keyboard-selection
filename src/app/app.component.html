@@ -1,23 +1,32 @@
 <header>
   <h1>MatRowKeyboardSelectionDirective</h1>
-  <p>MIT @ Douglas Gomes de Souza - <a href="https://github.com/douglasgsouza/mat-row-keyboard-selection">Source Code</a>
+  <p>MIT @ Douglas Gomes de Souza -  <a href="https://npmjs.com/package/mat-row-keyboard-selection">Install NPM Package</a> - <a href="https://github.com/douglasgsouza/mat-row-keyboard-selection">Source Code</a>
   </p>
   <hr>
   <div>
     <h2>&lt;table mat-table&gt;</h2>
+    <h4>matRowKeyboardSelection (default options)</h4>
     <pre>Selected: {{selection1.selected | json}}</pre>
   </div>
   <div>
     <h2>&lt;mat-table&gt;</h2>
+    <h4>matRowKeyboardSelection (default options)</h4>
     <pre>Selected: {{selection2.selected | json}}</pre>
   </div>
   <div>
-    <h2>&lt;mat-table&gt; autoFocus</h2>
+    <h2>&lt;table mat-table&gt;</h2>
+    <h4>matRowKeyboardSelection [selectOnFocus]="true"</h4>
     <pre>Selected: {{selection3.selected | json}}</pre>
   </div>
   <div>
-    <h2>&lt;mat-table&gt; autoFocus deselectOnBlur</h2>
+    <h2>&lt;mat-table&gt;</h2>
+    <h4>matRowKeyboardSelection [selectOnFocus]="true" [deselectOnBlur]="true"</h4>
     <pre>Selected: {{selection4.selected | json}}</pre>
+  </div>
+  <div>
+    <h2>&lt;table mat-table&gt;</h2>
+    <h4>matRowKeyboardSelection [selectOnFocus]="true" [toggleOnEnter]="false"</h4>
+    <pre>Selected: {{selection5.selected | json}}</pre>
   </div>
 </header>
 
@@ -92,5 +101,18 @@
       <mat-header-row *matHeaderRowDef="displayedColumnsB"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumnsB;" [matRowKeyboardSelection]="selection4" [rowModel]="row" [selectOnFocus]="true" [deselectOnBlur]="true"  [ngClass]="{selected: selection4.isSelected(row)}"></mat-row>
     </mat-table>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource5">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let item">{{item.name}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsB"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsB;" [matRowKeyboardSelection]="selection5" [rowModel]="row" [selectOnFocus]="true" [toggleOnEnter]="false" [ngClass]="{selected: selection5.isSelected(row)}"></tr>
+    </table>
   </div>
 </section>

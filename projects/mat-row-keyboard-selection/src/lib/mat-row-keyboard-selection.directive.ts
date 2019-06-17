@@ -16,6 +16,7 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
   }
 
   @Input() rowModel;
+  @Input() toggleOnEnter = true;
   @Input() selectOnFocus = false;
   @Input() deselectOnBlur = false;
 
@@ -59,7 +60,9 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
       } else if (event.key === 'ArrowUp') {
         newRow = this.rows[currentIndex - 1];
       } else if (event.key === 'Enter' || event.key === ' ') {
-        this.selection.toggle(this.rowModel);
+        if (this.toggleOnEnter) {
+          this.selection.toggle(this.rowModel);
+        }
         event.preventDefault();
       }
       if (newRow) {

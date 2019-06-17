@@ -79,7 +79,7 @@ With `<mat-table>`
  
 Keyboard Keys:
  * `Tab` - Focus a row or next element (follow the native tabindex).
- * `Space` and `Enter` - When row focused, select a row.
+ * `Space` and `Enter` - When row focused, toggle row. (Can be disabled with option `toggleOnEnter` = `false`)
  * `Arrow Down` - Move focus to next row.
  * `Arrow Up` - Move focus to previous row.
  
@@ -98,6 +98,7 @@ Available options:
  * `selectOnFocus` - Automatic select on row focus. (default: `false`)
    * If you have other row selection behaviors such as select `on click` or `checkbox selection` I recommend not enable this option and let your component decide when to make selection.
  * `deselectOnBlur` - Automatic deselect on row blur. (default: `false`)
+ * `toggleOnEnter` - Toggle Row on press Enter or Space. (default: `true`)
 
 ## Dependencies
 * Angular Core

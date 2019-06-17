@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
   selection3: SelectionModel<TableItem>;
   dataSource4: MatTableDataSource<TableItem>;
   selection4: SelectionModel<TableItem>;
+  dataSource5: MatTableDataSource<TableItem>;
+  selection5: SelectionModel<TableItem>;
 
   displayedColumnsA = ['select', 'name'];
   displayedColumnsB = ['name'];
@@ -45,5 +47,8 @@ export class AppComponent implements OnInit {
 
     this.dataSource4 = new MatTableDataSource<TableItem>(data);
     this.selection4  = new SelectionModel<TableItem>(false);
+
+    this.dataSource5 = new MatTableDataSource<TableItem>(data);
+    this.selection5  = new SelectionModel<TableItem>(false);
   }
 }
