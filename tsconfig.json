@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "mat-row-keyboard-selection": [
+        "dist/mat-row-keyboard-selection"
+      ],
+      "mat-row-keyboard-selection/*": [
+        "dist/mat-row-keyboard-selection/*"
+      ]
+    }
   }
 }
