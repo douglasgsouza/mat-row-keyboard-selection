@@ -11,11 +11,16 @@ https://douglasgsouza.github.io/mat-row-keyboard-selection/
 ## Table of contents
 
 - [About](#about)
-- [Installation](#installation)
-- [Documentation](https://github.com/douglasgsouza/mat-row-keyboard-selection/blob/master/README.md)
-- [License](#license)
+- [Installation](#Installing and Importing)
+- [Usage](#using)
+- [License](https://raw.githubusercontent.com/douglasgsouza/mat-row-keyboard-selection/master/LICENSE)
 
 ## About
+
+This is a simple directive that allows navigate Angular Material Data Table with keyboard. 
+This allow Focus MatRow and toogle SelectionModel using keyboard TAB, arrows Up, Down, Enter and Space.
+
+Made with :heart: in Brazil.
 
 ## Getting Started
 
@@ -72,6 +77,13 @@ With `<mat-table>`
     <mat-row *matRowDef="let row; columns: displayedColumns;" [matRowKeyboardSelection]="selectionModel" [rowModel]="row"></mat-row>
 ```
  
+Keyboard Keys:
+ * `Tab` - Focus a row or next element (follow the native tabindex).
+ * `Space` and `Enter` - When row focused, select a row.
+ * `Arrow Down` - Move focus to next row.
+ * `Arrow Up` - Move focus to previous row.
+ 
+ Case `selectOnFocus` is `True` model is selected when row is focused.
 
 ### Options 
 
