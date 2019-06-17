@@ -1,6 +1,6 @@
 {
   "name": "mat-row-keyboard-selection-package",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A very simple directive that allows Focus MatRow and toogle SelectionModel using keyboard TAB, arrows Up, Down, Enter and Space.",
   "author": "Douglas Gomes de Souza",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "build": "ng build",
     "build-prod": "ng build --prod --base-href /mat-row-keyboard-selection/",
     "build-lib": "ng build mat-row-keyboard-selection",
+    "publish-lib": "cd dist/mat-row-keyboard-selection && npm publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
