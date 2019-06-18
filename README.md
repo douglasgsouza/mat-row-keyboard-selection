@@ -99,6 +99,7 @@ Available options:
    * If you have other row selection behaviors such as select `on click` or `checkbox selection` I recommend not enable this option and let your component decide when to make selection.
  * `deselectOnBlur` - Automatic deselect on row blur. (default: `false`)
  * `toggleOnEnter` - Toggle Row on press Enter or Space. (default: `true`)
+ * `preventNewSelectionOnTab` - Prevent next row Focus on Tab. (default: `false`)
 
 ## Dependencies
 * Angular Core

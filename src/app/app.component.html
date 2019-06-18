@@ -10,7 +10,7 @@
   </div>
   <div>
     <h2>&lt;mat-table&gt;</h2>
-    <h4>matRowKeyboardSelection (default options)</h4>
+    <h4>matRowKeyboardSelection (default options) (click)="selection.toggle(row)"</h4>
     <pre>Selected: {{selection2.selected | json}}</pre>
   </div>
   <div>
@@ -25,7 +25,7 @@
   </div>
   <div>
     <h2>&lt;table mat-table&gt;</h2>
-    <h4>matRowKeyboardSelection [selectOnFocus]="true" [toggleOnEnter]="false"</h4>
+    <h4>matRowKeyboardSelection [selectOnFocus]="true" [toggleOnEnter]="false" [preventNewSelectionOnTab]="true"</h4>
     <pre>Selected: {{selection5.selected | json}}</pre>
   </div>
 </header>
@@ -50,7 +50,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumnsA"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumnsA;" [matRowKeyboardSelection]="selection1" [rowModel]="row" (click)="selection1.toggle(row)" [ngClass]="{selected: selection1.isSelected(row)}"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsA;" [matRowKeyboardSelection]="selection1" [rowModel]="row" [ngClass]="{selected: selection1.isSelected(row)}"></tr>
     </table>
   </div>
 
@@ -112,7 +112,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumnsB"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumnsB;" [matRowKeyboardSelection]="selection5" [rowModel]="row" [selectOnFocus]="true" [toggleOnEnter]="false" [ngClass]="{selected: selection5.isSelected(row)}"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsB;" [matRowKeyboardSelection]="selection5" [rowModel]="row" [selectOnFocus]="true" [toggleOnEnter]="false" [preventNewSelectionOnTab]="true" [ngClass]="{selected: selection5.isSelected(row)}"></tr>
     </table>
   </div>
 </section>

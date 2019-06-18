@@ -22,6 +22,7 @@ export class MatRowKeyboardSelectionDirective implements OnInit, OnDestroy {
   @Input() toggleOnEnter = true;
   @Input() selectOnFocus = false;
   @Input() deselectOnBlur = false;
+  @Input() preventNewSelectionOnTab = false;
 
   private unsubscriber$ = new Subject();
 
@@ -56,11 +57,22 @@ export class MatRowKeyboardSelectionDirective implements OnInit, OnDestroy {
     if (this.selectOnFocus && !this.selection.isMultipleSelection()) {
       this.selection.select(this.rowModel);
     }
+
+    if (this.selectOnFocus && this.preventNewSelectionOnTab) {
+      this.rows.forEach(row => {
+        if (row !== this.el.nativeElement) {
+          row.tabIndex = -1;
+        }
+      });
+    }
   }
 
   @HostListener('blur', ['$event']) onBlur() {
     if (this.deselectOnBlur && !this.selection.isMultipleSelection()) {
       this.selection.deselect(this.rowModel);
+    }
+    if (this.selectOnFocus) {
+      this.el.nativeElement.tabIndex = 0;
     }
   }
 
