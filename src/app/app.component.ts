@@ -1,6 +1,6 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component, OnInit} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 interface TableItem {
   name: string;
@@ -13,6 +13,9 @@ interface TableItem {
 })
 export class AppComponent implements OnInit {
   title = 'mat-row-keyboard-selection-package';
+
+  @ViewChild(MatPaginator) paginator1: MatPaginator;
+  @ViewChild(MatSort) sort1: MatSort;
 
   dataSource1: MatTableDataSource<TableItem>;
   selection1: SelectionModel<TableItem>;
@@ -36,8 +39,9 @@ export class AppComponent implements OnInit {
       data.push({name: 'item ' + x});
     }
 
-    this.dataSource1 = new MatTableDataSource<TableItem>(data);
-    this.selection1  = new SelectionModel<TableItem>(true);
+    this.dataSource1      = new MatTableDataSource<TableItem>(data);
+    this.dataSource1.sort = this.sort1;
+    this.selection1       = new SelectionModel<TableItem>(true);
 
     this.dataSource2 = new MatTableDataSource<TableItem>(data);
     this.selection2  = new SelectionModel<TableItem>(true);

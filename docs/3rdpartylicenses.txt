@@ -330,6 +330,8 @@ MIT
 
 @angular/material/checkbox
 
+@angular/material/sort
+
 @angular/material/table
 
 mat-row-keyboard-selection

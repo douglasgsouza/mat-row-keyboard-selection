@@ -1,15 +1,18 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Directive, ElementRef, Host, HostListener, Input, OnInit, Self} from '@angular/core';
+import {Directive, ElementRef, Host, HostListener, Input, OnDestroy, OnInit, Self} from '@angular/core';
 import {MatRow, MatTable, MatTableDataSource} from '@angular/material';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Directive({
   selector: '[matRowKeyboardSelection]'
 })
-export class MatRowKeyboardSelectionDirective implements OnInit {
+export class MatRowKeyboardSelectionDirective implements OnInit, OnDestroy {
 
   private selection: SelectionModel<any>;
   private dataSource: MatTableDataSource<any>;
   private rows: NodeListOf<HTMLElement>;
+  private renderedData: any[];
 
   @Input('matRowKeyboardSelection') set MatRowKeyboardSelection(selection) {
     this.selection = selection;
@@ -19,6 +22,8 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
   @Input() toggleOnEnter = true;
   @Input() selectOnFocus = false;
   @Input() deselectOnBlur = false;
+
+  private unsubscriber$ = new Subject();
 
   constructor(private el: ElementRef, @Host() @Self() private row: MatRow, @Host() private matTable: MatTable<any>) {}
 
@@ -36,8 +41,15 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
       this.el.nativeElement.tabIndex = 0;
     }
     this.dataSource = this.matTable.dataSource as MatTableDataSource<any>;
+    this.dataSource.connect().pipe(takeUntil(this.unsubscriber$)).subscribe(data => {
+      this.renderedData = data;
+      this.rows = this.getTableRows();
+    });
+  }
 
-    this.rows = this.getTableRows();
+  ngOnDestroy(): void {
+    this.unsubscriber$.next();
+    this.unsubscriber$.complete();
   }
 
   @HostListener('focus', ['$event']) onFocus() {
@@ -54,7 +66,7 @@ export class MatRowKeyboardSelectionDirective implements OnInit {
 
   @HostListener('keydown', ['$event']) onKeydown(event: KeyboardEvent) {
       let newRow;
-      const currentIndex = this.dataSource.data.findIndex(row => row === this.rowModel);
+      const currentIndex = this.renderedData.findIndex(row => row === this.rowModel);
       if (event.key === 'ArrowDown') {
         newRow = this.rows[currentIndex + 1];
       } else if (event.key === 'ArrowUp') {
